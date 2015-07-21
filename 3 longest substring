@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        for(int i=0; i < s.size();i++){
+            hash.emplace(s[i],false);
+        }
+        auto lsend=s.begin();
+        for(auto lshead=s.begin();lshead!=s.end();lshead++){
+            if(lshead!=s.begin()){hash[*(lshead-1)]=false;}
+            while((lsend!=s.end())&&(hash[*(lsend)]==false)){
+                hash[*lsend]=true;
+                lsend++;
+                
+            }
+            most=max(most,distance(lshead,lsend));
+        }
+
+        return (int)most;
+    }
+
+  
+
+private:
+map<char,bool> hash;
+int longthis=0;
+string::iterator::difference_type most=0;
+
+};
