@@ -1,0 +1,45 @@
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        unsigned int pos=0;
+        unsigned int length=1;
+        for (;pos<s.size();pos++){
+          length=maxlength;
+          length= isPalin(pos,length,s);
+          if(length>maxlength){
+	          maxlength=length;
+	          maxpos=pos;
+          }
+        }
+        return s.substring(maxpos,maxlength);
+
+    }
+
+    unsigned int isPalin(unsigned int pos,unsigned int length, string s){
+    	unsigned len;
+    	test=false;
+    	while(pos+length <s.size()){
+    	 str=s.substr(pos,length);
+	    	 for(int i=o;i<=(str.length-1)/2;i++){
+	    	 	if(s[i]==s[length-1-i])
+	    	 	{
+	    	 		testNew=true;
+	    	 		test=(test&&testNew);
+	    	 	}
+	    	 }
+
+	    	 if(test){
+	    	 len=length;
+	    	 }
+	    	length++;
+    	}
+
+
+    	return len;
+    }
+
+private:
+	unsigned int maxlength=1;
+	int maxpos=0;
+	bool test,testNew;
+};
