@@ -1,0 +1,50 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+    if (numRows<=0){
+    return ans;
+    } 
+
+    	int blockLine=((numRows==1)? 1:(2*numRows-2));
+        //for every line
+        for(int line=0; line<=numRows-1; line ++){
+        	pos=line;
+
+  	        //while pos smaller than the size of s
+			move1=blockLine-2*line;
+
+        	move2=blockLine-move1;
+
+        	if ((move1==0)||(move2==0)){
+        	move1=blockLine;
+        	move2=blockLine;
+        	}
+
+        	bool odd=true;
+
+  	        while(pos<s.size()){
+  	        		        	//put char at pos to ans
+	        	c=s[pos];
+	        	ans.push_back(c);
+	        	//move to next pos
+	        	if(odd)
+	        	{
+	        	pos=pos+move1;
+	        	}
+	        	else{
+	        	pos=pos+move2;
+	        	}
+	        	odd=!odd;
+	    
+			}
+		}
+
+		return ans;
+    }
+
+
+    private:
+string ans;
+    char c;
+    int pos,move1,move2;
+};
