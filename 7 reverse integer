@@ -1,0 +1,65 @@
+class Solution {
+private:
+int minus=1, dig;
+long int ans=0;
+vector<int> vec;
+public:
+	int t=sizeof(int);
+	long int max= pow(2,(t*8-1));
+    int reverse(int x) {
+        if(x < 0){
+        	x=-x;
+        	minus=-1;
+        }
+        while(x>=1){
+        	dig=x%10;
+        	x=x/10;
+        	vec.push_back(dig);
+        }
+
+        for(int digit=0;digit<vec.size();digit++){
+        	ans=ans*10+vec[digit];
+        }
+
+        if (ans> max) return 0;
+
+        return (minus*ans);
+    }
+
+
+};
+
+
+
+// non static member declared auto???
+/*class Solution {
+private:
+int minus=1, dig;
+long int ans=0;
+vector<int> vec;
+public:
+	auto t=sizeof(int);
+	auto max= pow(2,(t*8-1));
+    int reverse(int x) {
+        if(x < 0){
+        	x=-x;
+        	minus=-1;
+        }
+        while(x>=1){
+        	dig=x%10;
+        	x=x/10;
+        	vec.push_back(dig);
+        }
+
+        for(int digit=0;digit<vec.size();digit++){
+        	ans=ans*10+vec[digit];
+        }
+
+        if (ans> max) return 0;
+
+        return (minus*ans);
+    }
+
+
+};
+*/
