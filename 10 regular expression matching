@@ -1,0 +1,52 @@
+class Solution {
+    public: set<char> dic;
+public:
+     bool checkEqual(char a, char b){
+           if(a==b ||b=='.'){
+               return true;
+           }else if(b=='*'){
+               if(dic.find('.')!=dic.end()){
+                   return true;
+               }
+               else if(dic.find(a)!=dic.end()){
+                   return true;
+               };
+           }
+           return false;
+       }
+    bool isMatch(string s, string p) {
+        int len1=s.size();
+        int len2=p.size();
+        int pos1=0, pos2=0;
+        bool ans=false;
+        for(;pos2<len2;pos2++){
+            int t2=pos2, t1=pos1;
+            dic.insert(p[t2]);
+            if(checkEqual(s[t1], p[t2]))
+            {   
+                t1++;
+                t2++;
+               while(t1<len1 && t2<len2){
+                    if(checkEqual(s[t1], p[t2])){
+                        if(t1==len1-1) {
+                            ans =true;
+                            return ans;
+                        }
+                        dic.insert(p[t2]);
+                        pos1++;
+                        pos2++;
+                    }else{
+                        break;
+                    }
+                }       
+            }
+            
+        }
+         return ans;
+        
+       
+  
+       
+       
+    }
+};
